@@ -1,11 +1,60 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import SplitText from '../TextAnimations/SplitText/SplitText';
+import { PixelTransitionComponent } from '../components/PixelTransitionComponent'
+import { RollingGalleryComponent } from '../components/RollingGaleryComponent.tsx'
+import { Image } from 'astro:assets';
 ---
 
-<Layout>
-	<Welcome />
+
+<Layout 
+	pageTitle='Feliz dia de la madre' 
+	pageDescription='Página dedicada con mucho cariño a las madres de mi Familia'
+>
+	<section class="w-[90%] mx-auto pt-10">
+
+		<div class="text-center text-white">
+			<SplitText
+				client:load
+				text="Feliz día de la madre!"
+				className="text-6xl font-bold"
+				delay={ 210 }
+				animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
+				animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+				threshold={0.2}
+				rootMargin="100px"
+			/>
+		</div>
+
+		<div class="pt-20 opacity-0 fade-in-delay text-center p-2">
+			<PixelTransitionComponent client:only />
+			<h2 class="text-white pt-2">(Presiona el ramo de rosas)</h2>
+		</div>
+
+		<div class="text-white opacity-0 fade-in-delay pt-5">
+			<p class="text-balance text-center p-2">
+				En este día especial, queremos rendir homenaje a todas las madres de nuestra familia. Mujeres valientes, amorosas y entregadas,
+				que con cada gesto han construido los cimientos de lo que somos. Gracias por cada abrazo silencioso, por cada desvelo sin 
+				quejarse, por la fuerza con la que nos han sostenido incluso cuando ellas mismas se sentían débiles. Su amor ha sido el refugio
+				en los días grises y la luz que ha guiado nuestros pasos. Esta es una pequeña muestra de nuestro cariño y gratitud por todo lo 
+				que hacen, por todo lo que han hecho y por todo lo que significan. Hoy celebramos sus risas, su ternura y su infinita capacidad
+				de amar.
+			</p>
+			<figure class="p-3">
+				<Image class="mx-auto" width={ 300 } height={ 300 } src="https://firebasestorage.googleapis.com/v0/b/react-firebase-alurageek.appspot.com/o/fotos-dia-de-la-madre%2FWhatsApp%20Image%202025-05-10%20at%2007.28.19%20(1).jpeg?alt=media&token=46a73070-039e-4b85-a60d-2492e2b0f6a6" alt="Mama eva con sus 2 cholitos"/>
+				<figcaption class="text-xs text-center italic p-2">Mama eva con sus 2 cholitos, la queremos mucho</figcaption>
+			</figure>
+			<figure class="p-3">
+				<Image class="mx-auto" width={ 300 } height={ 300 } src="https://firebasestorage.googleapis.com/v0/b/react-firebase-alurageek.appspot.com/o/fotos-dia-de-la-madre%2FWhatsApp%20Image%202025-05-10%20at%2007.28.19%20(2).jpeg?alt=media&token=595e9e12-9e7c-4528-8120-1d9673bbbe0a" alt="Mi viejita con Jasson, Chiki y Bebo" />
+				<figcaption class="text-xs text-center italic p-2">Te quiero mucho vieja ❤️</figcaption>
+			</figure>
+			<figure class="p-3">
+				<Image class="mx-auto" width={ 300 } height={ 300 } src="https://firebasestorage.googleapis.com/v0/b/react-firebase-alurageek.appspot.com/o/fotos-dia-de-la-madre%2FWhatsApp%20Image%202025-05-10%20at%2007.33.13.jpeg?alt=media&token=093e1910-0987-4c2d-bf67-b8c8ecc7fa21" alt="Yossi y Michael con su primera bendición"/>
+				<figcaption class="text-xs text-center italic p-2">Mi tia Yossi junto a tio Michael con Stefano ❤️, te queremos mucho tía, gracias por estar siempre con nosotros</figcaption>
+			</figure>
+		</div>
+
+		<RollingGalleryComponent client:only />
+
+	</section>
 </Layout>

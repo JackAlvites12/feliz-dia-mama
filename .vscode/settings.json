@@ -1,0 +1,5 @@
+{
+    "files.associations": {
+            "*.css": "tailwindcss"   //-> Esto dice que todos los archivos CSS estén asocidados a TailwindCSS
+    }
+}

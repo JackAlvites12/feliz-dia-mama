@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "tailwindcss";
+
+@theme{
+    --font-poppins: "Poppins", sans-serif;
+}
+
+@layer utilities {
+  .fade-in-delay {
+    animation: fadeIn 1s ease-in-out forwards;
+    animation-delay: 4s;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
